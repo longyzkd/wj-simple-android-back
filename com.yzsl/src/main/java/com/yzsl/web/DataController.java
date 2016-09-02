@@ -62,7 +62,8 @@ public class DataController extends CommonController{
 	 */
 	@RequestMapping(value="login" )
 	public void login(String username,String password,HttpServletResponse response) {
-		
+		logger.info("username---"+username);
+		logger.info("password---"+password);
 		
 //		String sql = "SELECT UserID, UserName, Password, UserType, IsStoped, Note, Phone,AvatarPath "+
 //					" FROM tmanageruser a WHERE a.IsStoped=0 AND (a.UserID='{0}' OR a.Phone='{0}') "+
@@ -77,13 +78,17 @@ public class DataController extends CommonController{
 		if("wj".equals(username) && "123".equals(password)){
 			
 			 user = new User();
+			 user.setUsername("wj");
+			 user.setPassword("123");
 		}
 		Json json = new Json();
+		json.setSuccess(true);
 		if (user != null) {
 			json.setObj(user);
 			
 		} else {
 			json.setMsg("用户名或密码错误！");
+			json.setSuccess(false);
 		}
 		writeJson(response,json);
 		

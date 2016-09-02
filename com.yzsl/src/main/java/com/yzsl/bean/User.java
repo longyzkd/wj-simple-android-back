@@ -18,7 +18,7 @@ public class User implements java.io.Serializable {
 	// Fields
 
 	private String userId;
-	private String userName;
+	private String username;
 	private String password;
 	private Integer userType;
 	private Boolean isStoped;
@@ -26,6 +26,7 @@ public class User implements java.io.Serializable {
 	private String phone;
 
 	private String  avatarPath;
+	
 	// Constructors
 
 	/** default constructor */
@@ -43,7 +44,7 @@ public class User implements java.io.Serializable {
 	/** full constructor */
 	public User(String userName, String password, Integer userType,
 			Boolean isStoped, String note, String phone) {
-		this.userName = userName;
+		this.username = userName;
 		this.password = password;
 		this.userType = userType;
 		this.isStoped = isStoped;
@@ -63,12 +64,11 @@ public class User implements java.io.Serializable {
 	}
 
 	@Column(name = "UserName", length = 100)
-	public String getUserName() {
-		return this.userName;
+	public String getUsername() {
+		return username;
 	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	@Column(name = "Password", length = 200)
@@ -76,6 +76,7 @@ public class User implements java.io.Serializable {
 		return this.password;
 	}
 
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}

@@ -23,7 +23,7 @@
 	<logger name="org.hibernate" level="info"/>
 	<logger name="org.springframework" level="ERROR"/>
 <!-- 	<logger name="org.hibernate.search.impl.ConfigContext" level="ERROR"/> -->
-	<logger name="com.yzsl" level="DEBUG"/>
+	<logger name="com.yzsl" level="INFO"/>
 <!-- 	<logger name="me" level="INFO"/> -->
 
 
