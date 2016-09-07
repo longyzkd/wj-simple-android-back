@@ -1,0 +1,265 @@
+.menu_home
+{
+    background:url(../jslib/ExtJs/resources/themes/icons/application_home.png)
+}
+
+.menu_pageedit
+{
+    background:url(../jslib/ExtJs/resources/themes/icons/page_edit.gif)
+}
+
+.menu_setting
+{
+    background:url(../jslib/ExtJs/resources/themes/icons/list_settings.gif)
+}
+
+.menu_XNH
+{
+    background:url(../jslib/ExtJs/resources/themes/icons/heart_add.png)
+}
+
+.menu_ZHCX
+{
+    background:url(../jslib/ExtJs/resources/themes/icons/report.png)
+}
+
+.menu_JCSJ
+{
+    background:url(../jslib/ExtJs/resources/themes/icons/server_key.png)
+}
+
+.menu_XTGL
+{
+    background:url(../jslib/ExtJs/resources/themes/icons/cog.png)
+}
+
+.user_go
+{
+    background:url(../jslib/ExtJs/resources/themes/icons/user_go.png)
+}
+
+.icon1
+{
+    background:url(../jslib/ExtJs/resources/themes/icons/icon_mail.gif)
+}
+
+.tab
+{
+    background:url(../jslib/ExtJs/resources/themes/icons/application_form.png)
+}
+
+
+.x-title-icon
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/layout_sidebar.png);
+}
+ 
+.x-button-green
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/flag_green.gif);
+}
+ 
+.x-button-red
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/flag_red.gif);
+}
+ 
+.x-button-orange
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/flag_orange.gif);
+}
+ 
+.x-button-budget
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/money_dollar.png);
+}
+
+.x-button-money
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/money.png);
+}
+
+.x-button-interface_dialog
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/interface_dialog.gif);
+}
+
+.x-button-comment
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/comment1.png);
+}
+
+.x-button-importExcel
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/page_excel.png);
+}
+
+.x-button-exportExcel
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/page_excel.png);
+}
+
+.x-button-class
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/grid.png);
+}
+
+.x-button-detail
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/list_packages.gif);
+}
+
+.x-button-read
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/zoom.png);
+}
+
+.x-button-insert
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/add.png);
+}
+
+.x-button-update
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/cog_edit.png);
+}
+
+.x-button-delete
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/delete.png);
+}
+
+.x-button-cancel
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/cancel.png);
+}
+
+.x-button-close
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/cross.png);
+}
+
+.x-button-save
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/disk.png);
+}
+
+.x-button-download
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/book_link.png);
+}
+
+.x-button-refresh
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/arrow_refresh.png);
+}
+
+.x-button-redo
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/arrow_redo.png);
+}
+
+.x-button-select
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/magnifier_zoom_in.png);
+}
+
+.x-button-selectAccept
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/accept.png);
+}
+
+.x-button-submitPrint
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/action_print.gif);
+}
+
+.x-button-print
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/printer.png);
+}
+
+.x-button-submit
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/database_save.png);
+}
+
+.x-button-lock
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/lock.png);
+}
+
+.x-button-import
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/application_go.png);
+}
+
+.x-button-left
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/arrow_left.gif);
+}
+
+.x-button-right
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/arrow_right.gif);
+}
+
+.base-page
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/page_white_text.png);
+}
+
+.base-gold
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/medal_gold_2.png);
+}
+
+.base-coins
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/coins.png);
+}
+
+.base-usergroup
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/group.png);
+}
+
+.base-userorange
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/user_orange.png);
+}
+
+.base-dev
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/server_database.png);
+}
+
+.base-brick
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/brick.png);
+}
+
+.base-brickgo
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/brick_go.png);
+}
+
+.base-bricks
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/bricks.png);
+}
+
+.x-button-upload
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/attach.png);
+}
+
+.x-button-check
+{
+    background-image:url(../jslib/ExtJs/resources/themes/icons/checked.gif);
+}
+
+
+
+
+
