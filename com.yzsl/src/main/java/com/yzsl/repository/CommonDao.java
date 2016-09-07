@@ -5,10 +5,14 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
+
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.transform.ResultTransformer;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,6 +22,21 @@ public class CommonDao<T>  {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	
+	/**
+	 * 实体类类型(由构造方法自动赋值)
+	 */
+	private Class<?> entityClass;
+	
+	/**
+	 * 构造方法，根据实例类自动获取实体类类型
+	 */
+	public CommonDao() {
+//		entityClass = Reflections.getClassGenricType(getClass());
+	}
+	
+	
 
 	/**
 	 * 获得当前事物的session
@@ -29,11 +48,10 @@ public class CommonDao<T>  {
 	}
 
 	 
-	public Serializable save(T o) {
+	public void save(T o) {
 		if (o != null) {
-			return getCurrentSession().save(o);
+			 getCurrentSession().saveOrUpdate(o);
 		}
-		return null;
 	}
 
 	 
@@ -269,5 +287,39 @@ public class CommonDao<T>  {
 		}
 	}
 	
+	
+	/**
+	 * 使用检索标准对象查询
+	 * @param detachedCriteria
+	 * @return
+	 */
+	public List<T> find(DetachedCriteria detachedCriteria) {
+		return find(detachedCriteria, Criteria.DISTINCT_ROOT_ENTITY);
+	}
+	
+	
+	/**
+	 * 使用检索标准对象查询
+	 * @param detachedCriteria
+	 * @param resultTransformer
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<T> find(DetachedCriteria detachedCriteria, ResultTransformer resultTransformer) {
+		Criteria criteria = detachedCriteria.getExecutableCriteria(getCurrentSession());
+		criteria.setResultTransformer(resultTransformer);
+		return criteria.list(); 
+	}
+	
+	
+	/**
+	 * 物理删除
+	 * @param id
+	 * @return
+	 */
+	public int delete(Serializable id){
+		String hql = "delete from " +entityClass.getSimpleName()+" where id=:p1";
+		return getCurrentSession().createQuery(hql).setParameter("p1", id).executeUpdate();
+	}
 
 }

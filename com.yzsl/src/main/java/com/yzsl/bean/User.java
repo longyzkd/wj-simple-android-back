@@ -13,12 +13,14 @@ import javax.persistence.Table;
 /**
  * 以后映射数据库
  */
+@Entity
+@Table(name = "tmanageruser")
 public class User implements java.io.Serializable {
 
 	// Fields
 
-	private String userId;
-	private String username;
+	private String userId;   //登录名
+	private String username; //真实姓名
 	private String password;
 	private Integer userType;
 	private Boolean isStoped;
@@ -27,6 +29,7 @@ public class User implements java.io.Serializable {
 
 	private String  avatarPath;
 	
+	private String salt;
 	// Constructors
 
 	/** default constructor */
@@ -115,6 +118,13 @@ public class User implements java.io.Serializable {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	//@Column(name="salt")
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 	
 	

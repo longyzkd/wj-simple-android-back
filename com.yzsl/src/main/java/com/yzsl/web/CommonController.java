@@ -17,17 +17,17 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
+import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.context.request.ServletWebRequest;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.yzsl.bean.User;
 import com.yzsl.util.FastjsonFilter;
 
 
@@ -45,7 +45,14 @@ public abstract class CommonController {
 	 */
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	
-	
+	/**
+	 * current session's user
+	 * @return
+	 */
+	protected User getCurrentUser() {
+		User user = (User) SecurityUtils.getSubject().getPrincipal();
+		return user;
+	}
 	
 	/**
 	 * 初始化数据绑定

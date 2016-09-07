@@ -131,7 +131,8 @@
         <property name="hibernateProperties">
             <value>
 <!--                 hibernate.dialect=org.hibernate.dialect.SQLServer2008Dialect -->
-                hibernate.dialect=com.yzsl.util.SQLServerCustomDialect
+<!--                 hibernate.dialect=com.yzsl.util.SQLServerCustomDialect -->
+                hibernate.dialect=org.hibernate.dialect.MySQLDialect
                 hibernate.show_sql=true
                 hibernate.jdbc.fetch_size=50
                 hibernate.jdbc.batch_size=50

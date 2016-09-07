@@ -37,7 +37,7 @@
 	<mvc:default-servlet-handler/>
 	
 	<!-- 定义无需Controller的url<->view直接映射 -->
-<!-- 	<mvc:view-controller path="/" view-name="redirect:/index"/> -->
+	<mvc:view-controller path="/" view-name="redirect:/login/welcome"/>
 	
 	<!-- 注释掉以显示异常信息 -->
 	<!-- 将Controller抛出的异常转到特定View, 保持SiteMesh的装饰效果 -->
