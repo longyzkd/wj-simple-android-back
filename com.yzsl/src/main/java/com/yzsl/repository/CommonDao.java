@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -427,4 +428,57 @@ public class CommonDao<T>  {
 		return getCurrentSession().createQuery(hql).setParameter("p1", id).executeUpdate();
 	}
 
+	
+	/**
+	 * SQL 查询
+	 * @param sqlString
+	 * @param resultClass
+	 * @param parameter
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public <E> List<E> findBySql(String sqlString,  Map<String, Object> parameter, Class<?> resultClass){
+		SQLQuery query = createSqlQuery(sqlString, parameter);
+		setResultTransformer(query, resultClass);
+		return query.list();
+	}
+	/**
+	 * 创建 SQL 查询对象
+	 * @param sqlString
+	 * @param parameter
+	 * @return
+	 */
+	public SQLQuery createSqlQuery(String sqlString, Map<String, Object>  parameter){
+		SQLQuery query = getCurrentSession().createSQLQuery(sqlString);
+		setParameter(query, parameter);
+		return query;
+	}
+	
+	/**
+	 * 设置查询结果类型
+	 * @param query
+	 * @param resultClass
+	 */
+	private void setResultTransformer(SQLQuery query, Class<?> resultClass){
+		if (resultClass != null){
+			if (resultClass == Map.class){
+				query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+			}else if (resultClass == List.class){
+				query.setResultTransformer(Transformers.TO_LIST);
+			}else{
+				query.addEntity(resultClass);
+			}
+		}
+	}
+	private void setResultTransformer(Query query, Class<?> resultClass){
+		if (resultClass != null){
+			if (resultClass == Map.class){
+				query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+			}else if (resultClass == List.class){
+				query.setResultTransformer(Transformers.TO_LIST);
+			}else{
+				query.setResultTransformer(Transformers.aliasToBean(resultClass));
+			}
+		}
+	}
 }

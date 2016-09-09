@@ -6,14 +6,13 @@
 package com.yzsl.repository.account;
 
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 
+import com.google.common.collect.Maps;
 import com.yzsl.bean.Menu;
-import com.yzsl.bean.User;
 import com.yzsl.repository.CommonDao;
 
 @Component
@@ -27,6 +26,13 @@ public class MenuDao extends CommonDao<Menu>  {
 		return result;
 		
 		
+	}
+
+	public List<Menu> findMenusBy(String userIdString) {
+		String sql = "SELECT t.* FROM tmanagermenu t JOIN tmanageruserfun  a ON a.FunID=t.FunID WHERE a.UserID=:p1";
+		Map<String,Object> params = Maps.newHashMap(); 
+		params.put("p1", userIdString);
+		return findBySql(sql, params, Menu.class);
 	}
 
 	

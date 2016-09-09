@@ -40,6 +40,7 @@ public class UserController extends CommonController{
 
 	private static Logger logger = LoggerFactory.getLogger(UserController.class);
 	
+	public static final String ADMIN = "admin";
 
 	@Autowired
 	private AccountService service;
@@ -93,10 +94,10 @@ public class UserController extends CommonController{
 			String userIdString = u.getUserId();
 			List<Menu> menus ;
 			
-			if(userIdString.equals("admin") || true){//查询所有菜单
+			if(userIdString.equals(ADMIN) ){//查询所有菜单
 				menus = service.findAllMenus();
 			}else{
-//				menus = managermenuService.findMenuByuserId(userIdString);
+				menus = service.findMenuByuserId(userIdString);
 			}
 			menuTree = getMenuTree(menus);
 		}

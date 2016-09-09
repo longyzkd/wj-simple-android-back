@@ -39,6 +39,7 @@
 				/api/** = anon
 				/register/** = anon
 				/admin/** = roles[admin]
+				/data/** = anon  <!-- mobile 不在后台过滤 -->
 				/** = authc
 			</value>
 		</property>

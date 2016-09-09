@@ -131,6 +131,103 @@
         <property name="hibernateProperties">
             <value>
 <!--                 hibernate.dialect=org.hibernate.dialect.SQLServer2008Dialect -->
+                hibernate.dialect=com.yzsl.util.SQLServerCustomDialect
+                hibernate.show_sql=true
+                hibernate.jdbc.fetch_size=50
+                hibernate.jdbc.batch_size=50
+                hibernate.connection.autocommit=true
+                hibernate.connection.release_mode=auto
+                hibernate.current_session_context_class=org.springframework.orm.hibernate4.SpringSessionContext
+                javax.persistence.validation.mode=none
+            </value>
+        </property>
+	</bean>
+	
+	
+<!-- 	<bean id="dataSourceInterceptor" class="com.core.DataSourceInterceptor" /> -->
+
+<!-- 	<aop:config> -->
+<!-- 		<aop:aspect id="dataSourceAspect" ref="dataSourceInterceptor"> -->
+<!-- 			<aop:pointcut id="dsMysql" expression="execution(* com.controller.mysql.*.*(..))" /> -->
+<!-- 			<aop:pointcut id="dsOracle" expression="execution(* com.controller.oracle.*.*(..))" /> -->
+<!-- 			<aop:before method="setdataSourceMysql" pointcut-ref="dsMysql"/> -->
+<!-- 			<aop:before method="setdataSourceOracle" pointcut-ref="dsOracle"/> -->
+<!-- 		</aop:aspect> -->
+<!-- 	</aop:config> -->
+	
+	
+		<!-- 数据源配置,使用应用服务器的数据库连接池 -->
+		<!--<jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/ExampleDB" />-->
+	</beans>
+	<!-- dev环境 -->
+ 	<beans profile="dev">
+ 		<context:property-placeholder ignore-unresolvable="true"
+			location="classpath*:/application-dev.properties" />	
+		
+		<!-- 数据源配置, 使用Tomcat JDBC连接池 -->
+		<!-- to  -->
+		<bean id="dataSourceTo" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+			<!-- Connection Info -->
+			<property name="driverClassName" value="${jdbc.driver}" />
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+		
+			<!-- Connection Pooling Info -->
+			<property name="maxActive" value="${jdbc.pool.maxActive}" />
+			<property name="maxIdle" value="${jdbc.pool.maxIdle}" />
+			<property name="minIdle" value="0" />
+			<property name="defaultAutoCommit" value="false" />
+		</bean>
+		
+		<!-- from  -->
+		
+		
+		
+		<bean id="dataSourceMySql" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+		<property name="driverClassName" value="${mysql.jdbc.driverClass}" />
+		<property name="url" value="${mysql.jdbc.url}" />
+		<property name="username" value="${mysql.jdbc.user}" />
+		<property name="password" value="${mysql.jdbc.password}" />
+		
+	</bean>
+
+	<bean id="dataSourceOracle" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+		<property name="driverClassName" value="${oracle.jdbc.driverClass}" />
+		<property name="url" value="${oracle.jdbc.url}" />
+		<property name="username" value="${oracle.jdbc.user}" />
+		<property name="password" value="${oracle.jdbc.password}" />
+		
+	</bean>
+	
+	<bean id="dataSourceSqlserver" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+		<property name="driverClassName" value="${sqlserver.jdbc.driverClass}" />
+		<property name="url" value="${sqlserver.jdbc.url}" />
+		<property name="username" value="${sqlserver.jdbc.user}" />
+		<property name="password" value="${sqlserver.jdbc.password}" />
+		
+	</bean>
+	
+	
+	<bean id="dataSource" class="com.yzsl.util.DynamicDataSource">
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<entry key="dataSourceMySql" value-ref="dataSourceMySql" />
+				<entry key="dataSourceOracle" value-ref="dataSourceOracle" />
+				<entry key="dataSourceSqlserver" value-ref="dataSourceSqlserver" />
+				<entry key="dataSourceTo" value-ref="dataSourceTo" />
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="dataSourceTo" />
+	</bean>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		
+		 <property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.yzsl.bean" ></property>
+        <property name="hibernateProperties">
+            <value>
+<!--                 hibernate.dialect=org.hibernate.dialect.SQLServer2008Dialect -->
 <!--                 hibernate.dialect=com.yzsl.util.SQLServerCustomDialect -->
                 hibernate.dialect=org.hibernate.dialect.MySQLDialect
                 hibernate.show_sql=true

@@ -125,7 +125,7 @@ public class AccountService {
 		byte[] hashPassword = Digests.sha1("321".getBytes(),  Encodes.decodeHex("848c7f1e3c58ca09"), HASH_INTERATIONS);
 		
 //		String  hashPassword = new SimpleHash("SHA-1", "321", ByteSource.Util.bytes( Encodes.decodeHex("848c7f1e3c58ca09")), HASH_INTERATIONS).toString();
-		logger.info("pwd"+Encodes.encodeHex(hashPassword));
+		logger.info("pwd   "+ Digests.encryptPassword("123", "8449a736b311440a") );
 //		logger.info("pwd"+hashPassword);
 	}
 
@@ -211,6 +211,12 @@ public class AccountService {
 	public User one(User user) {
 		
 		return userDao.findByUserid(user.getUserId());
+	}
+
+
+	public List<Menu> findMenuByuserId(String userIdString) {
+		List<Menu>  menus =	menuDao.findMenusBy(userIdString);
+		return menus;
 	}
 	
 }

@@ -16,6 +16,8 @@ import java.util.zip.CRC32;
 import org.apache.commons.lang3.Validate;
 
 import com.google.common.hash.Hashing;
+import com.yzsl.bean.User;
+import com.yzsl.service.account.AccountService;
 
 /**
  * 消息摘要的工具类.
@@ -272,5 +274,15 @@ public class Digests {
 	 */
 	public static int murmur32(String input, Charset charset, int seed) {
 		return Hashing.murmur3_32(seed).hashString(input, charset).asInt();
+	}
+	
+	
+	/**
+	 * 设定安全的密码，生成随机的salt并经过1024次 sha-1 hash
+	 */
+	public static  String encryptPassword(String pwd,String salt) {
+		
+		byte[] hashPassword = Digests.sha1(pwd.getBytes(), Encodes.decodeHex(salt), AccountService.HASH_INTERATIONS);
+		return (Encodes.encodeHex(hashPassword));
 	}
 }

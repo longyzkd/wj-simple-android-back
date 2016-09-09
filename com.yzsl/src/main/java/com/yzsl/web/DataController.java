@@ -25,6 +25,8 @@ import com.google.common.collect.Lists;
 import com.yzsl.bean.Data;
 import com.yzsl.bean.User;
 import com.yzsl.service.DataService;
+import com.yzsl.service.account.AccountService;
+import com.yzsl.util.Digests;
 import com.yzsl.util.Json;
 
 
@@ -43,6 +45,8 @@ public class DataController extends CommonController{
 
 	@Autowired
 	private DataService service;
+	@Autowired
+	private AccountService userService;
 
 
 	@RequestMapping(value="get" ,method = RequestMethod.GET)
@@ -68,6 +72,31 @@ public class DataController extends CommonController{
 //		if(users != null && users.size()>0){
 //			user = users.get(0);
 //		}
+		
+		Json json = new Json();
+		
+		User user = userService.findUserByLoginName(username);
+		
+		if(user !=null){
+			String encrypted = Digests.encryptPassword(password, user.getSalt());
+			
+			if(user.getPassword().equals(encrypted)){
+				json.setObj(user);
+				json.setSuccess(true);
+				logger.info("匹配成功");
+			}else{
+				json.setMsg("用户名或密码错误！");
+				json.setSuccess(false);
+			}
+			
+		}else {
+			json.setMsg("用户名或密码错误！");
+			json.setSuccess(false);
+		}
+		
+		writeJson(response,json);
+		
+		/*
 		User user = null;
 		if("wj".equals(username) && "123".equals(password)){
 			
@@ -85,7 +114,7 @@ public class DataController extends CommonController{
 			json.setSuccess(false);
 		}
 		writeJson(response,json);
-		
+		*/
 		
 	}
 	
