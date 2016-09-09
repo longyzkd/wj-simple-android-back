@@ -6,6 +6,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE>
@@ -94,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     html: '<table width="100%" style="margin-left:20px; color:white;" cellspacing="0" cellpadding="0">' +
                             '<tr style="height:20px;"><td width="400px" style="font-size:28px;" rowspan="2"><strong>扬州闸后台管理系统</strong></td></tr>' +
                             '<tr>' +
-                            '<td style="text-align:right; padding-right:50px;">帐号：' + 'getUserId' + '&nbsp;&nbsp;名称：'+'getUserName'+'&nbsp;&nbsp;&nbsp;&nbsp;<img id="btnUpdatePWD" style="cursor:pointer;border:none;" alt="修改密码" src="<%=path%>/static/style/image/key.png" /><a id="aUpdatePWD" href="#" style="color:white;text-decoration:none;">修改密码</a>&nbsp;&nbsp;&nbsp;&nbsp;<img id="imgShutup" style="cursor:pointer;border:none;" alt="退出系统" src="<%=path%>/static/style/image/shut_down.png" /></td>' +
+                            '<td style="text-align:right; padding-right:50px;">帐号：' + curUser + '&nbsp;&nbsp;名称：'+'<shiro:principal property="username"/>'+'&nbsp;&nbsp;&nbsp;&nbsp;<img id="btnUpdatePWD" style="cursor:pointer;border:none;" alt="修改密码" src="<%=path%>/static/style/image/key.png" /><a id="aUpdatePWD" href="#" style="color:white;text-decoration:none;">修改密码</a>&nbsp;&nbsp;&nbsp;&nbsp;<img id="imgShutup" style="cursor:pointer;border:none;" alt="退出系统" src="<%=path%>/static/style/image/shut_down.png" /></td>' +
                             '</tr>' +
                           '</table>'
                 }),
@@ -123,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var menuList = [];
             Ext.Ajax.request({
                 async: false,
-                url: '<%=basePath%>base/tmanageruser!doNotNeedSecurity_getMainMenu.do',
+                url: '<%=basePath%>user/getMainMenu',
                 params: {
                     menutype: '2'
                 },

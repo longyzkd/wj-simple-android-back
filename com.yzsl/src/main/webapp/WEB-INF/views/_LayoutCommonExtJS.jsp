@@ -26,6 +26,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		var basepath = '${ctx}';
 		
+    	curUser = '<shiro:principal property="userId"/>';
+    	//TODO 从后台带过来
+    	pageSize=2;
+		
         Ext.grid.PageRowNumberer = Ext.extend(Ext.grid.RowNumberer, {
             width: 40,
             renderer: function (value, cellmeta, record, rowIndex, columnIndex, store) {
@@ -39,10 +43,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         });
         
         function titleName(action) {
-            var title = '[查看]';
+            var title = '[æ¥ç]';
             switch (action) {
-                case 'insert': title = '[新增]'; break;
-                case 'update': title = '[修改]'; break;
+                case 'insert': title = '[æ°å¢]'; break;
+                case 'update': title = '[ä¿®æ¹]'; break;
             }
             return title;
         }

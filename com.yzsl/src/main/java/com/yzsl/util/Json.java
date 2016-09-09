@@ -1,5 +1,9 @@
 package com.yzsl.util;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 /**
  * 
  * JSON模型
@@ -15,6 +19,19 @@ public class Json implements java.io.Serializable {
 	private String msg = "";
 
 	private Object obj = null;
+	
+	//EXT 静态树
+	private List children = Lists.newArrayList();
+	
+	
+
+	public List getChildren() {
+		return children;
+	}
+
+	public void setChildren(List children) {
+		this.children = children;
+	}
 
 	public boolean isSuccess() {
 		return success;
