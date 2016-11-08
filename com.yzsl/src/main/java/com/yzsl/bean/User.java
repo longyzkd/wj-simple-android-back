@@ -119,7 +119,7 @@ public class User implements java.io.Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	//@Column(name="salt")
+	@Column(name="salt")
 	public String getSalt() {
 		return salt;
 	}
