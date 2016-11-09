@@ -203,7 +203,7 @@ public class UserController extends CommonController{
 		for(Menu menu1 : menus){
 			if(StringUtils.isBlank(menu1.getFmenuId())){ //组装menuData,只有两层菜单
 				MenuData menuData = new MenuData();
-				menuData.setId(menu1.getMenuId()+"|"+menu1.getFunUrl());
+				menuData.setId(menu1.getMenuId()+"|"+ ( StringUtils.isEmpty(menu1.getFunUrl())?"":menu1.getFunUrl()));//避免"null"
 				menuData.setTitle(menu1.getMenuName());
 				menuData.setIconCls(menu1.getIconUrl());
 				if(menuData.getChildren() == null){
@@ -214,7 +214,7 @@ public class UserController extends CommonController{
 					if(menu.getFmenuId().equals(menu1.getMenuId())){
 						MenuData menuData1 = new MenuData();
 						menuData1.setFMenuId(menu.getFmenuId());
-						menuData1.setId(menu.getMenuId()+"|"+menu.getFunUrl());
+						menuData1.setId(menu.getMenuId()+"|"+( StringUtils.isEmpty(menu.getFunUrl())?"":menu.getFunUrl()) );
 						menuData1.setText(menu.getMenuName());
 						menuData1.setIcon(path + menu.getIconUrl());
 						menuData1.setExpanded(false);
