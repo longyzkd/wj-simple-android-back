@@ -15,6 +15,6 @@ CREATE TABLE tmanagermenu (
 -- Records of tmanagermenu
 -- ----------------------------
 INSERT INTO tmanagermenu VALUES ('01', '基础信息', 'menu_setting', null, '', '01', '1', null);
-INSERT INTO tmanagermenu VALUES ('0101', '用户管理', 'jslib/ExtJs/resources/themes/icons/grid.png', 'area/toArea.do', '01', '0101', '101', null);
-INSERT INTO tmanagermenu VALUES ('0102', '水闸管理', 'jslib/ExtJs/resources/themes/icons/book_open.png', 'area/toDicData.do', '01', '0102', '102', null);
+INSERT INTO tmanagermenu VALUES ('0101', '用户管理', 'static/jslib/ExtJs/resources/themes/icons/grid.png', 'area/toArea.do', '01', '0101', '101', null);
+INSERT INTO tmanagermenu VALUES ('0102', '水闸管理', 'static/jslib/ExtJs/resources/themes/icons/book_open.png', 'area/toDicData.do', '01', '0102', '102', null);
 
