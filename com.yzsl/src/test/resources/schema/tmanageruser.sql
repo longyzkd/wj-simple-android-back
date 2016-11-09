@@ -35,5 +35,6 @@ CREATE TABLE `tmanageruser` (
 -- ----------------------------
 -- Records of tmanageruser
 -- ----------------------------
+--密码123
 INSERT INTO `tmanageruser` VALUES ('8449a736b311440a', 'wj', 'WJ', '9d29dbed550fc22f41fcc607a12cd45938ad930d', '0', '0', null, null, null);
 INSERT INTO `tmanageruser` VALUES ('8449a736b311440a', 'admin', 'ADMIN', '9d29dbed550fc22f41fcc607a12cd45938ad930d', '0', '0', null, null, null);
